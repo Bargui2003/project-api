@@ -10,10 +10,10 @@ userName:string
 email:string
 @Column("text",{name:'firstName',nullable:true})
 firstName:string
-@Column()
+@Column("text",{name:'lastName',nullable:true})
 lastName:string
 @Column("text",{name:'password',nullable:true})
 password:string
-
-
+@Column("text",{name:'tocken',nullable:true})
+tocken:string
 }
