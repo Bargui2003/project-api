@@ -5,6 +5,7 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ClientModule } from './client/client.module';
+import { AuthModule } from './auth/auth.module';
 
 //importation (identifier le controller (constrire les roots) et le service ))
 @Module({
@@ -24,7 +25,8 @@ import { ClientModule } from './client/client.module';
     }),
 ConfigModule.forRoot(),
     UserModule,
-    ClientModule],
+    ClientModule,
+    AuthModule],
   controllers: [AppController,],
   providers: [AppService],
 })

@@ -24,6 +24,10 @@ export class UserService {
   const saltOrRounds = 10
 let passHash= await bcrypt.hash(password,saltOrRounds)
 return passHash
+} 
+findByEmail(email:string){
+  console.log('email',email)
+   return this.usersRepository.findOne({where:{email:email}})
 }
   findAll() {
     return this.usersRepository.findAndCount()
