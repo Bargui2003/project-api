@@ -14,6 +14,6 @@ firstName:string
 lastName:string
 @Column("text",{name:'password',nullable:true})
 password:string
-@Column("text",{name:'tocken',nullable:true})
-tocken:string
+@Column("text",{name:'token',nullable:true})
+token:string
 }
