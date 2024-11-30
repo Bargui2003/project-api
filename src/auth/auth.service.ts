@@ -1,12 +1,14 @@
+import { ClientService } from './../client/client.service';
 import { UserService } from './../user/user.service';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 
 @Injectable()
 export class AuthService {
-    constructor(private userService:UserService ,private jwtService:JwtService ){
+ 
+    constructor(private userService:UserService ,private jwtService:JwtService ,private clientService:ClientService){
 
     }
    async loginUser(email: any, password: any) {
@@ -26,5 +28,26 @@ if (user){
   }
 }
     }
+    async loginclient(email: any, password: any) {
+      let client = await this.clientService.findByEmail(email)
+      if (client){
+        let matchingPassword =await bcrypt.compare(password,client.password)
+        if (matchingPassword){
+          const payload={id:client.id,email:client.email,password:client.password}
+          return {
+           token: await this.jwtService.sign(payload,{secret:jwtConstants.secret}),
+        id:client.id,
+        email:client.email
+      }
+        }
+        else{
+          NotFoundException
+        }
+    
+      }else{
+        NotFoundException
+      }
+
+  }
  
 }

@@ -22,8 +22,8 @@ export class UserService {
   }
   async createdPasswordHash(password:string){
   const saltOrRounds = 10
-let passHash= await bcrypt.hash(password,saltOrRounds)
-return passHash
+  let passHash= await bcrypt.hash(password,saltOrRounds)
+  return passHash
 } 
 findByEmail(email:string){
   console.log('email',email)
