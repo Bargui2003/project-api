@@ -6,6 +6,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ClientModule } from './client/client.module';
 import { AuthModule } from './auth/auth.module';
+import { CommandeModule } from './commande/commande.module';
+import { ProduitModule } from './produit/produit.module';
+import { CommandeDetailModule } from './commande-detail/commande-detail.module';
 
 //importation (identifier le controller (constrire les roots) et le service ))
 @Module({
@@ -26,7 +29,10 @@ import { AuthModule } from './auth/auth.module';
 ConfigModule.forRoot(),
     UserModule,
     ClientModule,
-    AuthModule],
+    AuthModule,
+    CommandeModule,
+    ProduitModule,
+    CommandeDetailModule],
   controllers: [AppController,],
   providers: [AppService],
 })
