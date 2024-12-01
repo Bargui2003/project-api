@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Client } from 'src/client/entities/client.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity("user")
 export class User {
@@ -16,4 +17,10 @@ lastName:string
 password:string
 @Column("text",{name:'token',nullable:true})
 token:string
+
+
+
+@OneToMany(() => Client, (clientTable:Client) => clientTable.userId, { cascade: true })
+clients:Client[]
+
 }

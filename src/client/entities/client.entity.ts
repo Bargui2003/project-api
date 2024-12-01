@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/user/entities/user.entity';
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, ManyToOne } from 'typeorm';
 @Entity("Client")
 export class Client {
     @PrimaryGeneratedColumn()
@@ -15,4 +16,7 @@ export class Client {
     adresse:string
     @Column("text",{name:'ville',nullable:true})
     ville:string
+    @JoinColumn()
+    @ManyToOne(() => User, (userTable:User) => userTable.clients, { onDelete: 'CASCADE' })
+     userId:number;
     }
