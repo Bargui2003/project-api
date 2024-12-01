@@ -17,6 +17,6 @@ export class Client {
     @Column("text",{name:'ville',nullable:true})
     ville:string
     @JoinColumn()
-    @ManyToOne(() => User, (userTable:User) => userTable.clients, { onDelete: 'CASCADE' })
+    @ManyToOne(() => User, (userRole:User) => userRole.clients, { onDelete: 'CASCADE' })
      userId:number;
     }
