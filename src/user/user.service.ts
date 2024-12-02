@@ -48,4 +48,16 @@ findByEmail(email:string){
   async remove(id: number) {
     return this.usersRepository.delete(id)
   }
+  async listUserByFiltre(filter){
+    const { order, take, letter, lastName } = filter;
+
+    const query = await this.usersRepository
+      .createQueryBuilder("user")
+      .where("user.userName LIKE :letter", { letter: `${letter}%` })
+      .andWhere("user.lastName LIKE :lastName", { lastName: `${lastName}%` })
+      .orderBy("user.id", order) // Corrected `addOrderBy` to `orderBy`
+      .take(take) // Limits the number of results to `take`
+      .getMany();
+      return query
+  }
 }
