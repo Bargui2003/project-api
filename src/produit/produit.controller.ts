@@ -12,22 +12,22 @@ export class ProduitController {
     return this.produitService.create(createProduitDto);
   }
 
-  @Get()
+  @Get('produit-list')
   findAll() {
     return this.produitService.findAll();
   }
 
-  @Get(':id')
+  @Get('produit:id')
   findOne(@Param('id') id: string) {
     return this.produitService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('update-produit/:id')
   update(@Param('id') id: string, @Body() updateProduitDto: UpdateProduitDto) {
     return this.produitService.update(+id, updateProduitDto);
   }
 
-  @Delete(':id')
+  @Delete('delete-produit/:id')
   remove(@Param('id') id: string) {
     return this.produitService.remove(+id);
   }

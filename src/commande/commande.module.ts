@@ -7,6 +7,7 @@ import { Commande } from './entities/commande.entity';
 @Module({
   controllers: [CommandeController],
   providers: [CommandeService],
-  imports:[TypeOrmModule.forFeature([Commande])]
+  imports:[TypeOrmModule.forFeature([Commande])],
+  exports:[CommandeService]
 })
 export class CommandeModule {}
