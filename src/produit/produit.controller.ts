@@ -17,7 +17,7 @@ export class ProduitController {
     return this.produitService.findAll();
   }
 
-  @Get('produit:id')
+  @Get('produit/:id')
   findOne(@Param('id') id: string) {
     return this.produitService.findOne(+id);
   }

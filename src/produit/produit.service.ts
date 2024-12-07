@@ -7,12 +7,9 @@ import {Repository} from 'typeorm'
 @Injectable()
 export class ProduitService {
   constructor( //repository pour communiquer avec le db 
-    
     @InjectRepository(Produit)
     private produitRepository: Repository<Produit>,
   ) {}
-
-
 
   create(createProduitDto: CreateProduitDto) {
     return this.produitRepository.create()

@@ -6,8 +6,15 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTabl
 export class Commande {
 @PrimaryGeneratedColumn()
 id:number
+@Column("text",{name:'contenu',nullable:true})
+contenu:string
+
+
+
+
 @OneToMany(() => CommandeDetail, (commandeDetailTbale:CommandeDetail) => commandeDetailTbale.commandeId, { cascade: true })
 commandeDetails:CommandeDetail[]
+
 @ManyToMany(() => Produit, (produitTable:Produit) => produitTable.commandes, { cascade: true })
   @JoinTable()
   produits:Produit[];

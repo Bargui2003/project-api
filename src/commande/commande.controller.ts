@@ -12,22 +12,22 @@ export class CommandeController {
     return this.commandeService.create(createCommandeDto);
   }
 
-  @Get()
+  @Get("commande-list")
   findAll() {
     return this.commandeService.findAll();
   }
 
-  @Get(':id')
+  @Get('commande/:id')
   findOne(@Param('id') id: string) {
     return this.commandeService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('update-commande/:id')
   update(@Param('id') id: string, @Body() updateCommandeDto: UpdateCommandeDto) {
     return this.commandeService.update(+id, updateCommandeDto);
   }
 
-  @Delete(':id')
+  @Delete('delete-commande/:id')
   remove(@Param('id') id: string) {
     return this.commandeService.remove(+id);
   }
