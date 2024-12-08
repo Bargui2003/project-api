@@ -6,9 +6,12 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTabl
 export class Commande {
 @PrimaryGeneratedColumn()
 id:number
-@Column("text",{name:'contenu',nullable:true})
-contenu:string
-
+@Column("text",{name:'title',nullable:true})
+title:string
+@Column("text",{name:'description',nullable:true})
+description:string
+@Column("decimal",{name:'montatnt-ttc',nullable:true})
+montant:number
 
 
 

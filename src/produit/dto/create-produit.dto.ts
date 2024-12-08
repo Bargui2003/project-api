@@ -1,1 +1,3 @@
-export class CreateProduitDto {}
+export class CreateProduitDto {
+    image:string
+}

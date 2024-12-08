@@ -1,7 +1,8 @@
 
+import { join } from 'path/posix';
 import { CommandeDetail } from 'src/commande-detail/entities/commande-detail.entity';
 import { Commande } from 'src/commande/entities/commande.entity';
-import { Entity, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable, Column, BeforeInsert, BeforeUpdate } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable, Column, BeforeInsert, BeforeUpdate, JoinColumn } from 'typeorm';
 @Entity("produit")
 export class Produit {
   
@@ -14,6 +15,10 @@ title:string
 @Column("text",{name:'Description',nullable:true})
 description:string
 
+
+@Column("text",{name:'image',nullable:true})
+image:string
+
 @Column("decimal",{name:'Prix-h-tax',nullable:true})
 prixtax:number
 
@@ -22,7 +27,7 @@ tva:number
 
 @Column("decimal",{name:'TCC',nullable:true})
 ttc:number
-
+ 
 @Column("decimal",{name:'quantity',nullable:true})
 quantity:number
 
@@ -51,9 +56,9 @@ active:boolean
   @JoinTable()
   commandes:Commande[];
 
-
+@JoinColumn()
 @OneToMany(() => CommandeDetail, (commandeDetailTable:CommandeDetail) => commandeDetailTable.produit)
-commandeDetails:CommandeDetail
+commandeDetails:number
 
 
 

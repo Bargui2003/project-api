@@ -6,9 +6,8 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMan
 export class CommandeDetail {
 @PrimaryGeneratedColumn()
 id:number
-produit: any;  
-@Column("")
-caracteristique:string
+@Column("text",{name:'contity',nullable:true})
+contity:string
      
     
     
@@ -16,10 +15,5 @@ caracteristique:string
     
     
     @JoinColumn() 
-    @ManyToOne(() => Commande, (commande:Commande) => commande.commandeDetails, { onDelete: 'CASCADE' })
-        commandeId:number;
-    @JoinColumn()
-    @ManyToOne(() =>Produit , (produit:Produit) =>produit.commandeDetails)
-
-    produitID:number
+    @ManyToOne(() => Commande, (commande:Commande) => commande.commandeDetails, { onDelete: 'CASCADE' }) commandeId:number;produit: any;
 }
